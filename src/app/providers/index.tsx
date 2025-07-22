@@ -1,47 +1,29 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { RouterProvider, createRouter } from '@tanstack/react-router'
-import type { ReactNode } from 'react'
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { RouterProvider, createRouter } from "@tanstack/react-router";
 
-// Import routes
-import { Route as rootRoute } from '@/routes/__root'
-import { Route as indexRoute } from '@/routes/index'
-import { Route as settingsRoute } from '@/routes/settings'
+import { routeTree } from "@/routeTree.gen";
 
-// Create route tree
-const routeTree = rootRoute.addChildren([
-  indexRoute,
-  settingsRoute,
-])
+const router = createRouter({ routeTree });
 
-// Create a new router instance
-const router = createRouter({ routeTree })
-
-// Register the router instance for type safety
-declare module '@tanstack/react-router' {
+declare module "@tanstack/react-router" {
   interface Register {
-    router: typeof router
+    router: typeof router;
   }
 }
 
-// Create a client
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 1000 * 60 * 5, // 5 minutes
-      gcTime: 1000 * 60 * 10, // 10 minutes
+      staleTime: 1000 * 60 * 5,
+      gcTime: 1000 * 60 * 10,
     },
   },
-})
+});
 
-interface AppProvidersProps {
-  children?: ReactNode
-}
-
-export function AppProviders({ children }: AppProvidersProps) {
+export function AppProviders() {
   return (
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
-      {children}
     </QueryClientProvider>
-  )
+  );
 }
