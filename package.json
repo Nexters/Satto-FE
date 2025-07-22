@@ -1,0 +1,43 @@
+{
+  "name": "webview-history-app",
+  "version": "1.0.0",
+  "description": "모바일 웹뷰 히스토리 관리 앱",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "generate": "tsc && vite build --mode=development",
+    "check": "biome check .",
+    "check:fix": "biome check --write .",
+    "format": "biome format --write ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@biomejs/biome": "^2.1.2",
+    "@tailwindcss/postcss": "^4.1.11",
+    "@tanstack/router-devtools": "^1.129.2",
+    "@tanstack/router-vite-plugin": "^1.129.2",
+    "@types/node": "^24.0.15",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "^4.7.0",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.11",
+    "typescript": "^5.8.3",
+    "vite": "^7.0.5"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.83.0",
+    "@tanstack/react-router": "^1.129.2",
+    "@tanstack/react-store": "^0.7.3",
+    "@tanstack/router": "0.0.1-beta.53",
+    "@tanstack/store": "^0.7.2",
+    "clsx": "^2.1.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  }
+}
