@@ -2,8 +2,16 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { RouterProvider, createRouter } from '@tanstack/react-router'
 import type { ReactNode } from 'react'
 
-// Import the generated route tree
-import { routeTree } from '../routeTree.gen'
+// Import routes
+import { Route as rootRoute } from '@/routes/__root'
+import { Route as indexRoute } from '@/routes/index'
+import { Route as settingsRoute } from '@/routes/settings'
+
+// Create route tree
+const routeTree = rootRoute.addChildren([
+  indexRoute,
+  settingsRoute,
+])
 
 // Create a new router instance
 const router = createRouter({ routeTree })
