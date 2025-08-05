@@ -3,44 +3,52 @@ import { cn } from '../../lib/utils';
 
 interface TypographyProps {
   children: ReactNode;
-  variant?: 'h1' | 'h2' | 'h3' | 'body1' | 'body2' | 'caption' | 'overline';
+  variant?: 
+    // Display styles
+    | 'display-28' | 'display-26' | 'display-24' | 'display-22' | 'display-20'
+    // Text styles  
+    | 'text-18' | 'text-16' | 'text-14' | 'text-12';
+  weight?: 'regular' | 'medium' | 'semibold' | 'bold';
   color?: 'primary' | 'secondary' | 'gray' | 'white' | 'black';
-  weight?: 'light' | 'regular' | 'medium' | 'semibold' | 'bold';
   className?: string;
   as?: ElementType;
 }
 
 const variantStyles = {
-  h1: 'text-3xl font-bold leading-tight',
-  h2: 'text-2xl font-semibold leading-tight',
-  h3: 'text-xl font-medium leading-tight',
-  body1: 'text-base font-regular leading-normal',
-  body2: 'text-sm font-regular leading-normal',
-  caption: 'text-xs font-regular leading-normal',
-  overline: 'text-xs font-medium leading-normal uppercase tracking-wide',
+  // Display styles (Figma 기준)
+  'display-28': 'text-[28px] leading-[150%] tracking-[-0.015em]',
+  'display-26': 'text-[26px] leading-[150%] tracking-[-0.015em]', 
+  'display-24': 'text-[24px] leading-[150%] tracking-[-0.015em]',
+  'display-22': 'text-[22px] leading-[150%] tracking-[-0.015em]',
+  'display-20': 'text-[20px] leading-[150%] tracking-[-0.015em]',
+  
+  // Text styles (Figma 기준)
+  'text-18': 'text-[18px] leading-[150%] tracking-[-0.015em]',
+  'text-16': 'text-[16px] leading-[150%] tracking-[-0.015em]',
+  'text-14': 'text-[14px] leading-[150%] tracking-[-0.015em]',
+  'text-12': 'text-[12px] leading-[150%] tracking-[-0.015em]',
 };
 
 const colorStyles = {
   primary: 'text-primary-500',
-  secondary: 'text-gray-600',
-  gray: 'text-gray-700',
+  secondary: 'text-[#5E696E]', // Figma secondary color
+  gray: 'text-[#5E696E]',
   white: 'text-white',
-  black: 'text-black',
+  black: 'text-[#171719]', // Figma black color
 };
 
 const weightStyles = {
-  light: 'font-light',
-  regular: 'font-normal',
-  medium: 'font-medium',
-  semibold: 'font-semibold',
-  bold: 'font-bold',
+  regular: 'font-normal', // 400
+  medium: 'font-medium',  // 500
+  semibold: 'font-semibold', // 600
+  bold: 'font-bold',      // 700
 };
 
 export const Typography = ({
   children,
-  variant = 'body1',
+  variant = 'text-16',
+  weight = 'regular',
   color = 'black',
-  weight,
   className,
   as,
 }: TypographyProps) => {
@@ -51,8 +59,8 @@ export const Typography = ({
       className={cn(
         'font-suit',
         variantStyles[variant],
+        weightStyles[weight],
         colorStyles[color],
-        weight && weightStyles[weight],
         className
       )}
     >
@@ -63,14 +71,15 @@ export const Typography = ({
 
 function getDefaultElement(variant: TypographyProps['variant']): ElementType {
   switch (variant) {
-    case 'h1':
+    case 'display-28':
       return 'h1';
-    case 'h2':
+    case 'display-26':
+    case 'display-24':
       return 'h2';
-    case 'h3':
+    case 'display-22':
+    case 'display-20':
       return 'h3';
-    case 'caption':
-    case 'overline':
+    case 'text-12':
       return 'span';
     default:
       return 'p';
