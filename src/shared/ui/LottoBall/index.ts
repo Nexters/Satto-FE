@@ -1,0 +1,1 @@
+export { LottoBall } from './LottoBall';
