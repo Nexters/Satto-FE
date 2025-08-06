@@ -9,7 +9,7 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: '다양한 스타일과 크기를 지원하는 버튼 컴포넌트입니다.',
+        component: 'Figma 디자인 시스템 기반 버튼 컴포넌트입니다. 3가지 변형(Primary, Secondary, Ghost)과 5가지 크기(XS, S, M, L, XL)를 지원합니다.',
       },
     },
   },
@@ -17,17 +17,25 @@ const meta = {
   argTypes: {
     variant: {
       control: { type: 'select' },
-      options: ['primary', 'secondary', 'outline', 'ghost', 'floating'],
+      options: ['primary', 'secondary', 'ghost'],
+      description: '버튼의 시각적 스타일 변형',
     },
     size: {
       control: { type: 'select' },
-      options: ['sm', 'md', 'lg'],
+      options: ['xs', 's', 'm', 'l', 'xl'],
+      description: '버튼의 크기',
     },
     loading: {
       control: { type: 'boolean' },
+      description: '로딩 상태 표시',
     },
     fullWidth: {
       control: { type: 'boolean' },
+      description: '전체 너비 사용',
+    },
+    disabled: {
+      control: { type: 'boolean' },
+      description: '비활성화 상태',
     },
   },
 } satisfies Meta<typeof Button>;
@@ -35,6 +43,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// 기본 스토리들
 export const Primary: Story = {
   args: {
     variant: 'primary',
@@ -49,13 +58,6 @@ export const Secondary: Story = {
   },
 };
 
-export const Outline: Story = {
-  args: {
-    variant: 'outline',
-    children: '더보기',
-  },
-};
-
 export const Ghost: Story = {
   args: {
     variant: 'ghost',
@@ -63,28 +65,44 @@ export const Ghost: Story = {
   },
 };
 
-export const Floating: Story = {
+// 크기별 스토리들
+export const ExtraSmall: Story = {
   args: {
-    variant: 'floating',
-    children: '플로팅',
+    size: 'xs',
+    children: 'XS 버튼',
   },
 };
 
 export const Small: Story = {
   args: {
-    size: 'sm',
-    children: '작은 버튼',
+    size: 's',
+    children: 'S 버튼',
+  },
+};
+
+export const Medium: Story = {
+  args: {
+    size: 'm',
+    children: 'M 버튼',
   },
 };
 
 export const Large: Story = {
   args: {
-    size: 'lg',
-    children: '큰 버튼',
+    size: 'l',
+    children: 'L 버튼',
   },
 };
 
-export const WithIcon: Story = {
+export const ExtraLarge: Story = {
+  args: {
+    size: 'xl',
+    children: 'XL 버튼',
+  },
+};
+
+// 아이콘 포함 버튼
+export const WithLeftIcon: Story = {
   args: {
     children: '뒤로가기',
     icon: <Icon name="chevron-left" size="sm" />,
@@ -92,10 +110,26 @@ export const WithIcon: Story = {
   },
 };
 
+export const WithRightIcon: Story = {
+  args: {
+    children: '다음',
+    icon: <Icon name="chevron-right" size="sm" />,
+    iconPosition: 'right',
+  },
+};
+
+// 상태별 스토리들
 export const Loading: Story = {
   args: {
     loading: true,
     children: '로딩 중...',
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    disabled: true,
+    children: '비활성화',
   },
 };
 
@@ -109,24 +143,73 @@ export const FullWidth: Story = {
   },
 };
 
-export const AllVariants: Story = {
-  args: {
-    children: 'Button',
-  },
+// 모든 변형 시각화
+export const AllVariants = {
   render: () => (
-    <div className="space-y-4">
-      <div className="flex gap-2 flex-wrap">
-        <Button variant="primary">Primary</Button>
-        <Button variant="secondary">Secondary</Button>
-        <Button variant="outline">Outline</Button>
-        <Button variant="ghost">Ghost</Button>
-        <Button variant="floating">Floating</Button>
+    <div className="space-y-8 p-4">
+      <div>
+        <h3 className="text-lg font-bold mb-4">버튼 변형 (Variants)</h3>
+        <div className="flex gap-4 flex-wrap">
+          <Button variant="primary">Primary</Button>
+          <Button variant="secondary">Secondary</Button>
+          <Button variant="ghost">Ghost</Button>
+        </div>
       </div>
-      <div className="flex gap-2 items-center">
-        <Button size="sm">Small</Button>
-        <Button size="md">Medium</Button>
-        <Button size="lg">Large</Button>
+      
+      <div>
+        <h3 className="text-lg font-bold mb-4">버튼 크기 (Sizes)</h3>
+        <div className="flex gap-4 items-center flex-wrap">
+          <Button size="xs">XS</Button>
+          <Button size="s">S</Button>
+          <Button size="m">M</Button>
+          <Button size="l">L</Button>
+          <Button size="xl">XL</Button>
+        </div>
+      </div>
+      
+      <div>
+        <h3 className="text-lg font-bold mb-4">상태 (States)</h3>
+        <div className="flex gap-4 flex-wrap">
+          <Button>Default</Button>
+          <Button loading>Loading</Button>
+          <Button disabled>Disabled</Button>
+        </div>
       </div>
     </div>
   ),
+  parameters: {
+    layout: 'fullscreen',
+  },
+};
+
+// Figma 디자인 매트릭스
+export const DesignMatrix = {
+  render: () => (
+    <div className="p-6">
+      <h2 className="text-xl font-bold mb-6">Figma 디자인 매트릭스</h2>
+      <div className="space-y-6">
+        {(['primary', 'secondary', 'ghost'] as const).map((variant) => (
+          <div key={variant}>
+            <h3 className="text-lg font-semibold mb-3 capitalize">{variant}</h3>
+            <div className="grid grid-cols-5 gap-4">
+              {(['xs', 's', 'm', 'l', 'xl'] as const).map((size) => (
+                <div key={size} className="space-y-2">
+                  <div className="text-sm text-gray-500 uppercase">{size}</div>
+                  <Button variant={variant} size={size}>
+                    Button
+                  </Button>
+                  <Button variant={variant} size={size} disabled>
+                    Disabled
+                  </Button>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  ),
+  parameters: {
+    layout: 'fullscreen',
+  },
 };

@@ -2,7 +2,7 @@ import { SVGProps } from 'react';
 import { cn } from '../../lib/utils';
 
 interface IconProps extends SVGProps<SVGSVGElement> {
-  name: 'chevron-left' | 'chevron-up' | 'home' | 'list' | 'chart' | 'settings';
+  name: 'chevron-left' | 'chevron-right' | 'chevron-up' | 'home' | 'list' | 'chart' | 'settings';
   size?: 'sm' | 'md' | 'lg' | 'xl';
 }
 
@@ -19,6 +19,13 @@ const icons = {
       strokeLinecap="round"
       strokeLinejoin="round"
       d="M15.75 19.5L8.25 12l7.5-7.5"
+    />
+  ),
+  'chevron-right': (
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M8.25 4.5l7.5 7.5-7.5 7.5"
     />
   ),
   'chevron-up': (
