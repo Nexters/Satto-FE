@@ -76,6 +76,23 @@ a,
   user-select: none;
 }
 
+/* 모바일 웹뷰 최적화 */
+.safe-area-inset {
+  /* Safe Area 전체 적용 */
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+.overscroll-none {
+  overscroll-behavior: none;
+}
+
+.-webkit-overflow-scrolling-touch {
+  -webkit-overflow-scrolling: touch;
+}
+
 
 
 /* 애니메이션 최적화 */
