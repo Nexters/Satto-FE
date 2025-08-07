@@ -1,14 +1,7 @@
-/**
- * Satto 디자인 시스템 색상 토큰
- * Figma 디자인을 기반으로 한 색상 정의
- */
-
 export const colors = {
-  // Common Colors
   black: "#171719",
   white: "#FFFFFF",
 
-  // Gray Scale (9단계)
   gray: {
     1: "#222729",
     2: "#353C3F",
@@ -21,7 +14,6 @@ export const colors = {
     9: "#F7F9FA",
   },
 
-  // Primary Colors (9단계)
   primary: {
     1: "#6A00FF",
     2: "#7843FF",
@@ -34,7 +26,6 @@ export const colors = {
     9: "#F7F5FF",
   },
 
-  // Red Colors (9단계)
   red: {
     1: "#E43540",
     2: "#E43540",
@@ -47,7 +38,6 @@ export const colors = {
     9: "#FFF4F5",
   },
 
-  // Orange Colors (9단계)
   orange: {
     1: "#ED4C0C",
     2: "#F5662D",
@@ -60,7 +50,6 @@ export const colors = {
     9: "#FFF7F4",
   },
 
-  // Yellow Colors (9단계)
   yellow: {
     1: "#FFC300",
     2: "#FFD105",
@@ -73,7 +62,6 @@ export const colors = {
     9: "#FFFDF4",
   },
 
-  // Green Colors (9단계)
   green: {
     1: "#05A445",
     2: "#26AD5C",
@@ -86,7 +74,6 @@ export const colors = {
     9: "#EDFDF4",
   },
 
-  // Blue Colors (9단계)
   blue: {
     1: "#177FD9",
     2: "#3592E4",
@@ -99,7 +86,6 @@ export const colors = {
     9: "#F4FAFF",
   },
 
-  // Opacity Variants (Gray 기준)
   opacity: {
     "80%": "rgba(23, 23, 25, 0.8)",
     "55%": "rgba(23, 23, 25, 0.55)",
@@ -109,9 +95,7 @@ export const colors = {
     "2%": "rgba(23, 23, 25, 0.02)",
   },
 
-  // Gradient
   gradient: {
-    // Component gradient (Primary 기준)
     component: {
       from: "#F2EDFF",
       to: "#F2EDFF",

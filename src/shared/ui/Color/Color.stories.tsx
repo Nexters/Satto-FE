@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { colors } from "./index";
+import { colors } from "../../design-tokens/color";
 
 const meta: Meta = {
-  title: "Design System/Colors",
+  title: "UI/Color",
   parameters: {
     layout: "fullscreen",
     docs: {
@@ -109,7 +109,6 @@ export const AllColors: Story = {
   ),
 };
 
-// Opacity 색상들
 export const OpacityColors: Story = {
   render: () => (
     <div className="p-8 bg-white">
@@ -148,7 +147,6 @@ export const OpacityColors: Story = {
   ),
 };
 
-// Gradient
 export const GradientColors: Story = {
   render: () => (
     <div className="p-8 bg-white">

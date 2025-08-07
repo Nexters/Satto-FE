@@ -7,7 +7,6 @@ export default {
     "./stories/**/*.{js,ts,jsx,tsx}",
   ],
   safelist: [
-    // 커스텀 색상 클래스들을 항상 생성하도록 보장
     {
       pattern:
         /^(bg|text|border)-(primary|gray|red|orange|yellow|green|blue)-(1|2|3|4|5|6|7|8|9)$/,
@@ -15,10 +14,16 @@ export default {
     {
       pattern: /^(bg|text|border)-gray-alpha-(80|55|16|8|4|2)$/,
     },
+    // Typography 클래스들
+    {
+      pattern: /^text-(display|heading|body|caption)-(28|26|24|22|20|18|16|14|12)$/,
+    },
+    {
+      pattern: /^font-(regular|medium|semibold|bold)$/,
+    },
   ],
   theme: {
     extend: {
-      // 모바일 웹뷰 전용 추가 설정
       screens: {
         "safe-area": "390px",
       },
@@ -30,13 +35,10 @@ export default {
         "safe-right": "env(safe-area-inset-right)",
       },
 
-      // Satto 디자인 시스템 색상 팔레트 (Figma 기준)
       colors: {
-        // Common Colors
         black: "#171719",
         white: "#FFFFFF",
 
-        // Gray Scale (9단계)
         gray: {
           1: "#222729",
           2: "#353C3F",
@@ -49,7 +51,6 @@ export default {
           9: "#F7F9FA",
         },
 
-        // Primary Colors (9단계)
         primary: {
           1: "#6A00FF",
           2: "#7843FF",
@@ -62,7 +63,6 @@ export default {
           9: "#F7F5FF",
         },
 
-        // Red Colors (9단계)
         red: {
           1: "#E43540",
           2: "#E43540",
@@ -75,7 +75,6 @@ export default {
           9: "#FFF4F5",
         },
 
-        // Orange Colors (9단계)
         orange: {
           1: "#ED4C0C",
           2: "#F5662D",
@@ -88,7 +87,6 @@ export default {
           9: "#FFF7F4",
         },
 
-        // Yellow Colors (9단계)
         yellow: {
           1: "#FFC300",
           2: "#FFD105",
@@ -101,7 +99,6 @@ export default {
           9: "#FFFDF4",
         },
 
-        // Green Colors (9단계)
         green: {
           1: "#05A445",
           2: "#26AD5C",
@@ -114,7 +111,6 @@ export default {
           9: "#EDFDF4",
         },
 
-        // Blue Colors (9단계)
         blue: {
           1: "#177FD9",
           2: "#3592E4",
@@ -127,7 +123,6 @@ export default {
           9: "#F4FAFF",
         },
 
-        // Opacity Variants (Gray 기준)
         "gray-alpha": {
           80: "rgba(23, 23, 25, 0.8)",
           55: "rgba(23, 23, 25, 0.55)",
@@ -154,6 +149,28 @@ export default {
           "Segoe UI Symbol",
           "sans-serif",
         ],
+      },
+
+      fontSize: {
+        "display-28": ["28px", { lineHeight: "150%", letterSpacing: "-1.5%" }],
+        "display-26": ["26px", { lineHeight: "150%", letterSpacing: "-1.5%" }],
+
+        "heading-24": ["24px", { lineHeight: "150%", letterSpacing: "-1.5%" }],
+        "heading-22": ["22px", { lineHeight: "150%", letterSpacing: "-1.5%" }],
+        "heading-20": ["20px", { lineHeight: "150%", letterSpacing: "-1.5%" }],
+
+        "body-18": ["18px", { lineHeight: "150%", letterSpacing: "-1.5%" }],
+        "body-16": ["16px", { lineHeight: "150%", letterSpacing: "-1.5%" }],
+        "body-14": ["14px", { lineHeight: "150%", letterSpacing: "-1.5%" }],
+
+        "caption-12": ["12px", { lineHeight: "150%", letterSpacing: "-1.5%" }],
+      },
+
+      fontWeight: {
+        regular: "400",
+        medium: "500",
+        semibold: "600",
+        bold: "700",
       },
 
       minHeight: {

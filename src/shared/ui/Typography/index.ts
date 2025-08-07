@@ -1,7 +1,10 @@
-export { Typography } from "./Typography";
+export { Typography, default } from "./Typography";
 export type {
   TypographyProps,
-  FontSize,
+  TypographyVariant,
+  DisplayVariant,
+  HeadingVariant,
+  BodyVariant,
+  CaptionVariant,
   FontWeight,
-  SemanticVariant,
 } from "./Typography";
