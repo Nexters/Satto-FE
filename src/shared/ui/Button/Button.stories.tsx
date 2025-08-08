@@ -60,40 +60,6 @@ export const Default: Story = {
   },
 };
 
-export const AllVariants: Story = {
-  args: {
-    children: "Button",
-  },
-  render: () => (
-    <div className="flex flex-col gap-4">
-      <div className="flex gap-4 items-center">
-        <Button variant="primary">Primary</Button>
-        <Button variant="tinted">Tinted</Button>
-        <Button variant="border">Border</Button>
-        <Button variant="border-gray">Border Gray</Button>
-        <Button variant="text">Text</Button>
-      </div>
-    </div>
-  ),
-};
-
-export const AllSizes: Story = {
-  args: {
-    children: "Button",
-  },
-  render: () => (
-    <div className="flex flex-col gap-4">
-      <div className="flex gap-4 items-center">
-        <Button size="xl">XL Button</Button>
-        <Button size="l">L Button</Button>
-        <Button size="m">M Button</Button>
-        <Button size="s">S Button</Button>
-        <Button size="xs">XS Button</Button>
-      </div>
-    </div>
-  ),
-};
-
 export const AllStates: Story = {
   args: {
     children: "Button",
@@ -173,22 +139,25 @@ export const WithIcons: Story = {
     children: "Button",
   },
   render: () => (
-    <div className="flex flex-col gap-4">
-      <div className="flex gap-4 items-center">
-        <Button variant="primary" leftIcon={<span>←</span>}>
-          Left Icon
-        </Button>
-        <Button variant="primary" rightIcon={<span>→</span>}>
-          Right Icon
-        </Button>
-        <Button
-          variant="primary"
-          leftIcon={<span>←</span>}
-          rightIcon={<span>→</span>}
-        >
-          Both Icons
-        </Button>
-      </div>
+    <div className="flex flex-col gap-6">
+      {(["xl", "l", "m", "s", "xs"] as const).map((size) => (
+        <div className="flex gap-4 items-center">
+          <Button variant="primary" size={size} leftIcon={<span>←</span>}>
+            Left Icon
+          </Button>
+          <Button variant="primary" size={size} rightIcon={<span>→</span>}>
+            Right Icon
+          </Button>
+          <Button
+            variant="primary"
+            size={size}
+            leftIcon={<span>←</span>}
+            rightIcon={<span>→</span>}
+          >
+            Both Icons
+          </Button>
+        </div>
+      ))}
     </div>
   ),
 };
