@@ -1,4 +1,9 @@
 import { cn } from "../../lib/tailwind-cn";
+import ballYellow from "../../assets/images/ball/ball_yellow.png";
+import ballBlue from "../../assets/images/ball/ball_blue.png";
+import ballRed from "../../assets/images/ball/ball_red.png";
+import ballGray from "../../assets/images/ball/ball_gray.png";
+import ballGreen from "../../assets/images/ball/ball_green.png";
 
 export const LOTTO_BALL_COLORS = {
   YELLOW: "yellow",
@@ -9,13 +14,11 @@ export const LOTTO_BALL_COLORS = {
 } as const;
 
 const ballImages = {
-  yellow: new URL("../../assets/images/ball/ball_yellow.png", import.meta.url)
-    .href,
-  blue: new URL("../../assets/images/ball/ball_blue.png", import.meta.url).href,
-  red: new URL("../../assets/images/ball/ball_red.png", import.meta.url).href,
-  gray: new URL("../../assets/images/ball/ball_gray.png", import.meta.url).href,
-  green: new URL("../../assets/images/ball/ball_green.png", import.meta.url)
-    .href,
+  yellow: ballYellow,
+  blue: ballBlue,
+  red: ballRed,
+  gray: ballGray,
+  green: ballGreen,
 } as const;
 
 export type LottoBallColor =

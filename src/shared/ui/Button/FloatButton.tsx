@@ -1,12 +1,7 @@
 import { type ButtonHTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
-
-const ballImage = new URL(
-  "../../assets/images/ball/export-ball.png",
-  import.meta.url
-).href;
-const arrowUpSvg = new URL("../../assets/svgs/arrow-up.svg", import.meta.url)
-  .href;
+import ballImage from "../../assets/images/ball/export-ball.png";
+import arrowUpSvg from "../../assets/svgs/arrow-up.svg";
 
 export interface FloatButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {}
