@@ -52,7 +52,7 @@ export default {
           4: "#6E777C",
           5: "#AEB7BC",
           6: "#CFD6D9",
-          7: "##E7EDF0",
+          7: "#E7EDF0",
           8: "#F1F4F6",
           9: "#F7F9FA",
         },
