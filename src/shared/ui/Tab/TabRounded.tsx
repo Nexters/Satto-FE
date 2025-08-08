@@ -118,8 +118,6 @@ export function TabRounded({
             type="button"
             role="tab"
             aria-selected={ariaSelected}
-            aria-controls={`tabpanel-${opt.value}`}
-            id={`tab-${opt.value}`}
             tabIndex={tabIndex}
             className={classes}
             onClick={() => !opt.disabled && onChange(opt.value)}
