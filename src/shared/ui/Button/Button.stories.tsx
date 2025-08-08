@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button } from "./Button";
+import { FloatButton } from "./FloatButton";
 
 const meta = {
   title: "Design System/Button",
@@ -193,6 +194,17 @@ export const SizeVariantMatrix: Story = {
           </div>
         </div>
       ))}
+    </div>
+  ),
+};
+
+export const FloatButtonExample: Story = {
+  args: {
+    children: "FloatButton",
+  },
+  render: () => (
+    <div className="relative h-16 bp-8">
+      <FloatButton onClick={() => alert("플로팅 버튼이 클릭되었습니다!")} />
     </div>
   ),
 };
