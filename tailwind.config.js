@@ -14,12 +14,18 @@ export default {
     {
       pattern: /^(bg|text|border)-gray-alpha-(80|55|16|8|4|2)$/,
     },
-    // Typography 클래스들
     {
-      pattern: /^text-(display|heading|body|caption)-(28|26|24|22|20|18|16|14|12)$/,
+      pattern:
+        /^text-(display|heading|body|caption)-(28|26|24|22|20|18|16|14|12)$/,
     },
     {
       pattern: /^font-(regular|medium|semibold|bold)$/,
+    },
+    {
+      pattern: /^(bg|text|border)-(primary|gray)-(1|2|3|4|5|6|7|8|9)$/,
+    },
+    {
+      pattern: /^(bg|text|border)-(transparent|black|white)$/,
     },
   ],
   theme: {
