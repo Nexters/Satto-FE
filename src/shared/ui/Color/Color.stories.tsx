@@ -92,17 +92,11 @@ export const AllColors: Story = {
         </div>
 
         <ColorGroup title="Gray" colors={colors.gray} />
-
         <ColorGroup title="Primary" colors={colors.primary} />
-
         <ColorGroup title="Red" colors={colors.red} />
-
         <ColorGroup title="Orange" colors={colors.orange} />
-
         <ColorGroup title="Yellow" colors={colors.yellow} />
-
         <ColorGroup title="Green" colors={colors.green} />
-
         <ColorGroup title="Blue" colors={colors.blue} />
       </div>
     </div>
