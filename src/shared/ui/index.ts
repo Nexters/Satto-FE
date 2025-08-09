@@ -4,3 +4,4 @@ export { Ball } from "./Ball";
 export { TabRounded } from "./Tab";
 export { Checkbox } from "./Checkbox";
 export { SegmentedControl } from "./SegmentedControl";
+export { Chip } from "./Chip";
