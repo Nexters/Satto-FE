@@ -6,6 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+debug-storybook.log
 
 node_modules
 dist
@@ -128,3 +129,6 @@ jspm_packages/
 
 # TanStack Router
 routeTree.gen.ts
+
+*storybook.log
+storybook-static
