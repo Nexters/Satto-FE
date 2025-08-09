@@ -1,6 +1,6 @@
 import { cn } from "../../lib/tailwind-cn";
 import { ReactNode, ElementType } from "react";
-import { getDefaultTag, getDefaultWeight } from "./Typography.config";
+import { getDefaultTag, getDefaultWeight } from "./Typography.hooks";
 
 export type FontWeight = "regular" | "medium" | "semibold" | "bold";
 
