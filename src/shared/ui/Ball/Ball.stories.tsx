@@ -62,12 +62,12 @@ export const LottoSet: Story = {
     <div className="flex gap-2 items-center">
       <Ball number={3} color={LOTTO_BALL_COLORS.YELLOW} />
       <Ball number={12} color={LOTTO_BALL_COLORS.BLUE} />
-      <Ball number={23} color={LOTTO_BALL_COLORS.RED} />
-      <Ball number={31} color={LOTTO_BALL_COLORS.GRAY} />
-      <Ball number={42} color={LOTTO_BALL_COLORS.GREEN} />
-      <Ball number={45} color={LOTTO_BALL_COLORS.GREEN} />
-      <span className="mx-2 text-gray-400">+</span>
-      <Ball number={8} color={LOTTO_BALL_COLORS.YELLOW} />
+      <Ball number={23} color={LOTTO_BALL_COLORS.BLUE} />
+      <Ball number={31} color={LOTTO_BALL_COLORS.RED} />
+      <Ball number={42} color={LOTTO_BALL_COLORS.RED} />
+      <Ball number={45} color={LOTTO_BALL_COLORS.GRAY} />
+      <span className="mx-2 text-gray-3">+</span>
+      <Ball number={8} color={LOTTO_BALL_COLORS.GREEN} />
     </div>
   ),
   parameters: {
