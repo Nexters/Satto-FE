@@ -1,4 +1,4 @@
-import React from "react";
+import { useId, type ChangeEvent } from "react";
 import { twMerge } from "tailwind-merge";
 import clsx from "clsx";
 import type { CheckboxProps } from "./Checkbox.types";
@@ -15,7 +15,7 @@ export const Checkbox = ({
   className,
   onChange,
 }: CheckboxProps) => {
-  const inputId = id || React.useId();
+  const inputId = id || useId();
   const box = "w-5 h-5 rounded-[6px]";
   const icon = 14;
   const gap = "gap-2";
@@ -34,7 +34,7 @@ export const Checkbox = ({
     : undefined;
   const iconSrc = isDisabled ? checkboxDisabledSvg : checkboxSvg;
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange?.(e.target.checked);
   };
 
