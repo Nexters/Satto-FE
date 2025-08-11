@@ -1,54 +1,87 @@
-import { useState } from "react";
+import { useMemo, useRef, useState } from "react";
+import { SegmentedControl, Typography } from "../../shared/ui";
+import { FloatButton } from "../../shared/ui/Button/FloatButton";
+import colors from "../../shared/design-tokens/color";
+import { historyMock, rankingMock } from "./mock";
+import HistoryList from "../../widgets/lotto-history/HistoryList";
+import RankingPanel from "../../widgets/lotto-history/RankingPanel";
 
 const LottoHistory = () => {
   const [activeTab, setActiveTab] = useState<"history" | "ranking">("history");
+  const contentRef = useRef<HTMLDivElement>(null);
+  const scrollToTop = () => {
+    contentRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const [rankingSort, setRankingSort] = useState<"rank" | "number">("rank");
+  const [includeBonus, setIncludeBonus] = useState(false);
+
+  const rankingList = useMemo(() => {
+    const list = [...rankingMock];
+    if (rankingSort === "rank") {
+      list.sort((a, b) => a.rank - b.rank);
+    } else {
+      list.sort((a, b) => a.number - b.number);
+    }
+    return list;
+  }, [rankingSort, includeBonus]);
+
+  const tabs = useMemo(
+    () => [
+      { label: "지난 번호", value: "history" },
+      { label: "번호 랭킹", value: "ranking" },
+    ],
+    []
+  );
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <div className="bg-white shadow-sm">
-        <div className="max-w-md mx-auto px-4 py-6">
-          <h1 className="text-2xl font-bold text-gray-900 text-center mb-6">
+    <div className="h-screen bg-primary-9 flex flex-col">
+      <div className="bg-primary-9">
+        <div className="max-w-md mx-auto px-6 pt-6 pb-4">
+          <Typography
+            as="h1"
+            variant="heading-24"
+            className="text-2xl font-bold text-gray-1 text-center"
+          >
             뭐 나왔지
-          </h1>
+          </Typography>
 
-          {/* Tab Navigation */}
-          <div className="flex bg-gray-100 rounded-lg p-1">
-            <button
-              onClick={() => setActiveTab("history")}
-              className={`flex-1 py-3 px-4 rounded-md text-sm font-medium transition-colors ${
-                activeTab === "history"
-                  ? "bg-white text-gray-900 shadow-sm"
-                  : "text-gray-500 hover:text-gray-700"
-              }`}
-            >
-              지난 번호
-            </button>
-            <button
-              onClick={() => setActiveTab("ranking")}
-              className={`flex-1 py-3 px-4 rounded-md text-sm font-medium transition-colors ${
-                activeTab === "ranking"
-                  ? "bg-white text-gray-900 shadow-sm"
-                  : "text-gray-500 hover:text-gray-700"
-              }`}
-            >
-              번호 랭킹
-            </button>
+          <div className="mt-6 flex justify-center">
+            <SegmentedControl
+              value={activeTab}
+              options={tabs}
+              onChange={(v) => setActiveTab(v as "history" | "ranking")}
+              color="primary"
+            />
           </div>
         </div>
+        <div
+          className="h-[1px] w-full"
+          style={{ background: colors.gradient.component.direction }}
+          role="separator"
+          aria-orientation="horizontal"
+        />
       </div>
 
-      {/* Content */}
-      <div className="max-w-md mx-auto px-4 py-6">
-        {activeTab === "history" ? (
-          <div className="text-center text-gray-500">
-            지난 번호 내용이 여기에 표시됩니다.
+      <div ref={contentRef} className="flex-1 overflow-y-auto">
+        <div className="max-w-md mx-auto px-6 space-y-4 relative">
+          {activeTab === "history" ? (
+            <HistoryList items={historyMock} />
+          ) : (
+            <RankingPanel
+              list={rankingList}
+              rankingSort={rankingSort}
+              setRankingSort={setRankingSort}
+              includeBonus={includeBonus}
+              setIncludeBonus={setIncludeBonus}
+            />
+          )}
+          <div className="sticky bottom-6 flex justify-end pointer-events-none z-10">
+            <div className="pointer-events-auto">
+              <FloatButton onClick={scrollToTop} />
+            </div>
           </div>
-        ) : (
-          <div className="text-center text-gray-500">
-            번호 랭킹 내용이 여기에 표시됩니다.
-          </div>
-        )}
+        </div>
       </div>
     </div>
   );

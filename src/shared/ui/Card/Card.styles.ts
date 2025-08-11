@@ -12,7 +12,7 @@ export const cardM = {
     cardBase.bg,
     cardRadius.container,
 
-    "p-4 flex flex-col gap-4 w-[327px]",
+    "p-4 flex flex-col gap-4",
   ].join(" "),
   header: ["flex flex-row items-center gap-[6px] w-full"].join(" "),
   title: [
@@ -22,8 +22,10 @@ export const cardM = {
   date: [
     "text-[12px] leading-6 font-medium tracking-[-0.015em] text-gray-4",
   ].join(" "),
-  ballsRow: ["flex flex-row items-center gap-2 w-full"].join(" "),
-  bonusDivider: ["text-gray-3 text-[10px] leading-6 font-bold mx-1"].join(" "),
+  ballsRow: ["flex flex-row items-center justify-between w-full"].join(" "),
+  bonusDivider: [
+    "flex items-center justify-center text-gray-3 w-[10px] h-[10px] leading-6 font-bold mx-1",
+  ].join(" "),
   ballWrap: ["relative w-8 h-8"].join(" "),
   ballNumber: [
     "absolute inset-0 flex items-center justify-center text-[14px] leading-6 font-extrabold tracking-[-0.015em] text-white",
@@ -47,7 +49,7 @@ export const cardS = {
     cardBase.bg,
     cardRadius.container,
 
-    "w-[327px] h-[77px] px-5 py-4 flex flex-row items-center gap-4",
+    " h-[77px] px-5 py-4 flex flex-row items-center gap-4",
   ].join(" "),
   ballWrap: ["relative w-8 h-8"].join(" "),
   ballNumber: [

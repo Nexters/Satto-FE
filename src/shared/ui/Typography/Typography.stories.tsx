@@ -196,9 +196,7 @@ export const Caption: Story = {
   ),
 };
 
-// Typography 테이블 데이터
 const typographyData = [
-  // Display
   {
     name: "28_B",
     variant: "display-28" as const,
@@ -218,7 +216,6 @@ const typographyData = [
     letterSpacing: "-1.5%",
   },
 
-  // Heading
   {
     name: "24_B",
     variant: "heading-24" as const,
@@ -292,7 +289,6 @@ const typographyData = [
     letterSpacing: "-1.5%",
   },
 
-  // Body
   {
     name: "18_B",
     variant: "body-18" as const,
@@ -402,7 +398,6 @@ const typographyData = [
     letterSpacing: "-1.5%",
   },
 
-  // Caption
   {
     name: "12_B",
     variant: "caption-12" as const,
