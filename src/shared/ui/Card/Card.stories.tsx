@@ -34,7 +34,6 @@ export default meta;
 
 type Story = StoryObj<typeof Card>;
 
-// helpers
 const sampleBalls = [
   { number: 4, color: "yellow" as const },
   { number: 12, color: "blue" as const },
