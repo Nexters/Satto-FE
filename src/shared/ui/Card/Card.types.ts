@@ -29,6 +29,7 @@ export interface CardSProps extends BaseCardProps {
   state: CardSState;
   rank?: number;
   title: string;
+  type?: "rank" | "number";
   ball?: BallProps;
 }
 

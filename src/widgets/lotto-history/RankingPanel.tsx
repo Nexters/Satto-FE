@@ -22,7 +22,6 @@ export const RankingPanel = ({
   isLoading = false,
   error = null,
 }: RankingPanelProps) => {
-  console.log(list);
   return (
     <>
       <div className="sticky top-0 z-30 bg-primary-9 pt-4 pb-3 flex items-center justify-between">
@@ -64,9 +63,10 @@ export const RankingPanel = ({
           list.map((r) => (
             <Card
               key={`${r.rank}-${r.number}`}
-              title={`${r.count}번`}
+              title={`${r.count}${rankingSort === "rank" ? "위" : "번"}`}
               size="S"
               state={r.rank === 1 ? "rank1" : "default"}
+              type={rankingSort === "rank" ? "rank" : "number"}
               rank={r.rank}
               ball={{ number: r.number, color: r.color }}
             />

@@ -112,7 +112,7 @@ function CardMView(props: CardMProps) {
 }
 
 function CardSView(props: CardSProps) {
-  const { className, title, ball, rank, ...rest } = props;
+  const { className, title, ball, rank, type, ...rest } = props;
 
   return (
     <div className={twMerge(cardS.container, className)} {...rest}>
@@ -127,8 +127,12 @@ function CardSView(props: CardSProps) {
       <div className={cardS.textWrap}>
         {rank ? (
           <div className={cardS.rankRow}>
-            <div className={cardS.rank}>{rank}위</div>
-            {rank === 1 ? (
+            {type === "rank" ? (
+              <div className={cardS.rank}>{rank}위</div>
+            ) : (
+              <div className={cardS.rank}>{ball?.number}번공</div>
+            )}
+            {rank === 1 && type === "rank" ? (
               <img src={crownPng} alt="crown" className={cardS.rankIcon} />
             ) : null}
           </div>
