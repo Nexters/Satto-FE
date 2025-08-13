@@ -16,6 +16,7 @@ export type HistoryItem = {
 export type RankingItem = {
   rank: number;
   number: number;
+  count: number;
   color: BallProps["color"];
 };
 

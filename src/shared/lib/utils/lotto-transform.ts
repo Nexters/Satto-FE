@@ -62,6 +62,7 @@ export const transformLottoStatisticsToRankingItems = (
   return statistics.map((stat, index) => ({
     rank: index + 1,
     number: stat.num,
+    count: stat.count,
     color: getColorByNumber(stat.num),
   }));
 };

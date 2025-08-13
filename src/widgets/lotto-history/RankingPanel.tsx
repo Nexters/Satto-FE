@@ -22,6 +22,7 @@ export const RankingPanel = ({
   isLoading = false,
   error = null,
 }: RankingPanelProps) => {
+  console.log(list);
   return (
     <>
       <div className="sticky top-0 z-30 bg-primary-9 pt-4 pb-3 flex items-center justify-between">
@@ -58,14 +59,12 @@ export const RankingPanel = ({
             데이터를 불러오는 중 오류가 발생했습니다.
           </div>
         ) : isLoading ? (
-          <div className="text-center py-8 text-gray-5">
-            로딩 중...
-          </div>
+          <div className="text-center py-8 text-gray-5">로딩 중...</div>
         ) : (
           list.map((r) => (
             <Card
               key={`${r.rank}-${r.number}`}
-              title={`${r.number}번`}
+              title={`${r.count}번`}
               size="S"
               state={r.rank === 1 ? "rank1" : "default"}
               rank={r.rank}
