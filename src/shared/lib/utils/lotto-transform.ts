@@ -23,34 +23,36 @@ const formatPrizeAmount = (amount: number): string => {
 };
 
 const formatDate = (dateString: string): string => {
-  return dateString.replace(/-/g, ".");
+  return dateString.replace(/-/g, "-");
 };
 
 export const transformLottoDrawToHistoryItem = (
   draw: LottoDraw
 ): HistoryItem => {
+  const ballColors = ["yellow", "blue", "blue", "red", "red", "gray"] as const;
+
   const balls: HistoryBall[] = [
-    { number: draw.num1, color: getColorByNumber(draw.num1) },
-    { number: draw.num2, color: getColorByNumber(draw.num2) },
-    { number: draw.num3, color: getColorByNumber(draw.num3) },
-    { number: draw.num4, color: getColorByNumber(draw.num4) },
-    { number: draw.num5, color: getColorByNumber(draw.num5) },
-    { number: draw.num6, color: getColorByNumber(draw.num6) },
+    { number: draw.num1, color: ballColors[0] },
+    { number: draw.num2, color: ballColors[1] },
+    { number: draw.num3, color: ballColors[2] },
+    { number: draw.num4, color: ballColors[3] },
+    { number: draw.num5, color: ballColors[4] },
+    { number: draw.num6, color: ballColors[5] },
   ];
 
   const bonusBall: HistoryBall = {
     number: draw.bonus_num,
-    color: getColorByNumber(draw.bonus_num),
+    color: "green",
   };
 
   return {
     id: draw.round.toString(),
-    title: `제 ${draw.round}회`,
+    title: `${draw.round}회`,
     date: formatDate(draw.draw_date),
     balls,
     bonusBall,
-    footerLeft: `총 당첨자 ${draw.total_winners}명`,
-    footerRight: `1등 ${formatPrizeAmount(draw.first_prize_amount)}`,
+    footerLeft: `${draw.total_winners}명 당첨`,
+    footerRight: `${formatPrizeAmount(draw.first_prize_amount)}`,
   };
 };
 
