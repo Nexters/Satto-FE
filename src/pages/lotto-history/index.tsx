@@ -2,9 +2,14 @@ import { useMemo, useRef, useState } from "react";
 import { SegmentedControl, Typography } from "../../shared/ui";
 import { FloatButton } from "../../shared/ui/Button/FloatButton";
 import colors from "../../shared/design-tokens/color";
-import { historyMock, rankingMock } from "./mock";
 import HistoryList from "../../widgets/lotto-history/HistoryList";
 import RankingPanel from "../../widgets/lotto-history/RankingPanel";
+import {
+  useLottoDraws,
+  useLottoStatistics,
+  transformLottoDrawToHistoryItem,
+  transformLottoStatisticsToRankingItems,
+} from "../../shared/lib";
 
 const LottoHistory = () => {
   const [activeTab, setActiveTab] = useState<"history" | "ranking">("history");
@@ -16,15 +21,35 @@ const LottoHistory = () => {
   const [rankingSort, setRankingSort] = useState<"rank" | "number">("rank");
   const [includeBonus, setIncludeBonus] = useState(false);
 
+  const {
+    data: drawsData,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    isLoading: isDrawsLoading,
+    error: drawsError,
+  } = useLottoDraws({ limit: 20 });
+
+  const {
+    data: statisticsData,
+    isLoading: isStatisticsLoading,
+    error: statisticsError,
+  } = useLottoStatistics({
+    sort_type: rankingSort === "rank" ? "frequency" : "number",
+    include_bonus: includeBonus,
+  });
+
+  const historyItems = useMemo(() => {
+    if (!drawsData?.pages) return [];
+    return drawsData.pages.flatMap((page) =>
+      page.draws.map(transformLottoDrawToHistoryItem)
+    );
+  }, [drawsData]);
+
   const rankingList = useMemo(() => {
-    const list = [...rankingMock];
-    if (rankingSort === "rank") {
-      list.sort((a, b) => a.rank - b.rank);
-    } else {
-      list.sort((a, b) => a.number - b.number);
-    }
-    return list;
-  }, [rankingSort, includeBonus]);
+    if (!statisticsData) return [];
+    return transformLottoStatisticsToRankingItems(statisticsData);
+  }, [statisticsData]);
 
   const tabs = useMemo(
     () => [
@@ -66,7 +91,14 @@ const LottoHistory = () => {
       <div ref={contentRef} className="flex-1 overflow-y-auto">
         <div className="max-w-md mx-auto px-6 space-y-4 relative">
           {activeTab === "history" ? (
-            <HistoryList items={historyMock} />
+            <HistoryList
+              items={historyItems}
+              isLoading={isDrawsLoading}
+              error={drawsError}
+              hasNextPage={hasNextPage}
+              isFetchingNextPage={isFetchingNextPage}
+              onLoadMore={fetchNextPage}
+            />
           ) : (
             <RankingPanel
               list={rankingList}
@@ -74,6 +106,8 @@ const LottoHistory = () => {
               setRankingSort={setRankingSort}
               includeBonus={includeBonus}
               setIncludeBonus={setIncludeBonus}
+              isLoading={isStatisticsLoading}
+              error={statisticsError}
             />
           )}
           <div className="sticky bottom-6 flex justify-end pointer-events-none z-10">

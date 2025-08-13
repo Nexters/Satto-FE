@@ -9,6 +9,8 @@ interface RankingPanelProps {
   setRankingSort: (v: "rank" | "number") => void;
   includeBonus: boolean;
   setIncludeBonus: (v: boolean) => void;
+  isLoading?: boolean;
+  error?: Error | null;
 }
 
 export const RankingPanel = ({
@@ -17,6 +19,8 @@ export const RankingPanel = ({
   setRankingSort,
   includeBonus,
   setIncludeBonus,
+  isLoading = false,
+  error = null,
 }: RankingPanelProps) => {
   return (
     <>
@@ -49,16 +53,26 @@ export const RankingPanel = ({
       />
 
       <div className="grid grid-cols-1 gap-3 relative z-0">
-        {list.map((r) => (
-          <Card
-            key={`${r.rank}-${r.number}`}
-            title={`${r.number}회`}
-            size="S"
-            state={r.rank === 1 ? "rank1" : "default"}
-            rank={r.rank}
-            ball={{ number: r.number, color: r.color }}
-          />
-        ))}
+        {error ? (
+          <div className="text-center py-8 text-gray-5">
+            데이터를 불러오는 중 오류가 발생했습니다.
+          </div>
+        ) : isLoading ? (
+          <div className="text-center py-8 text-gray-5">
+            로딩 중...
+          </div>
+        ) : (
+          list.map((r) => (
+            <Card
+              key={`${r.rank}-${r.number}`}
+              title={`${r.number}번`}
+              size="S"
+              state={r.rank === 1 ? "rank1" : "default"}
+              rank={r.rank}
+              ball={{ number: r.number, color: r.color }}
+            />
+          ))
+        )}
       </div>
     </>
   );
