@@ -1,9 +1,13 @@
-import type { CapacitorConfig } from '@capacitor/cli';
+import type { CapacitorConfig } from "@capacitor/cli";
 
 const config: CapacitorConfig = {
-  appId: 'com.satto.app',
-  appName: 'satto-history-app',
-  webDir: 'dist'
+  appId: "com.yourcompany.webviewhistory",
+  appName: "webview-history-app",
+  webDir: "dist",
+  server: {
+    androidScheme: "https",
+    iosScheme: "capacitor",
+  },
 };
 
 export default config;

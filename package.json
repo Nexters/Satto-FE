@@ -12,7 +12,15 @@
     "check:fix": "biome check --write .",
     "format": "biome format --write .",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "cap:add": "cap add",
+    "cap:sync": "npm run build && cap sync",
+    "cap:open:ios": "cap open ios",
+    "cap:open:android": "cap open android",
+    "cap:run:ios": "npm run build && cap run ios",
+    "cap:run:android": "npm run build && cap run android",
+    "cap:update": "npm run build && cap update",
+    "cap:migrate": "cap migrate"
   },
   "keywords": [],
   "author": "",
