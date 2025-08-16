@@ -1,9 +1,9 @@
 const getBaseUrl = () => {
   if (import.meta.env.DEV) {
-    return "/api";
+    return "/api/v1";
   }
 
-  return "https://www.satto.io.kr/api";
+  return "https://www.satto.io.kr/api/v1";
 };
 
 const BASE_URL = getBaseUrl();
