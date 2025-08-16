@@ -1,9 +1,6 @@
 const getBaseUrl = () => {
-  if (import.meta.env.DEV) {
-    return "/api/v1";
-  }
-
-  return "https://www.satto.io.kr/api/v1";
+  // 개발/프로덕션 모두 프록시를 통해 요청
+  return "/api/v1";
 };
 
 const BASE_URL = getBaseUrl();
@@ -30,13 +27,8 @@ export class ApiClient {
     const response = await fetch(fullUrl, {
       method: "GET",
       headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Origin: import.meta.env.DEV
-          ? "http://localhost:5173"
-          : "https://clever-kataifi-dcedaf.netlify.app",
+        "Accept": "application/json",
       },
-
       mode: "cors",
       credentials: "omit",
     });
