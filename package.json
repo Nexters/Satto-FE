@@ -12,13 +12,22 @@
     "check:fix": "biome check --write .",
     "format": "biome format --write .",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "cap:add": "cap add",
+    "cap:sync": "npm run build && cap sync",
+    "cap:open:ios": "cap open ios",
+    "cap:open:android": "cap open android",
+    "cap:run:ios": "npm run build && cap run ios",
+    "cap:run:android": "npm run build && cap run android",
+    "cap:update": "npm run build && cap update",
+    "cap:migrate": "cap migrate"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@biomejs/biome": "^2.1.2",
+    "@capacitor/cli": "^7.4.2",
     "@storybook/addon-docs": "^9.1.1",
     "@storybook/react-vite": "^9.1.1",
     "@tanstack/router-devtools": "^1.129.2",
@@ -35,6 +44,9 @@
     "vite": "^7.0.5"
   },
   "dependencies": {
+    "@capacitor/android": "^7.4.2",
+    "@capacitor/core": "^7.4.2",
+    "@capacitor/ios": "^7.4.2",
     "@tanstack/react-query": "^5.83.0",
     "@tanstack/react-router": "^1.129.2",
     "@tanstack/react-store": "^0.7.3",
