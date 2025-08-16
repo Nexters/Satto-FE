@@ -1,4 +1,12 @@
-const BASE_URL = "/api/v1";
+const getBaseUrl = () => {
+  if (import.meta.env.DEV) {
+    return "/api";
+  }
+
+  return "https://www.satto.io.kr/api";
+};
+
+const BASE_URL = getBaseUrl();
 
 export class ApiClient {
   private baseUrl: string;
@@ -23,7 +31,14 @@ export class ApiClient {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        Accept: "application/json",
+        Origin: import.meta.env.DEV
+          ? "http://localhost:5173"
+          : "https://clever-kataifi-dcedaf.netlify.app",
       },
+
+      mode: "cors",
+      credentials: "omit",
     });
 
     if (!response.ok) {

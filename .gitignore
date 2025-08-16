@@ -132,3 +132,6 @@ routeTree.gen.ts
 
 *storybook.log
 storybook-static
+
+# Local Netlify folder
+.netlify
