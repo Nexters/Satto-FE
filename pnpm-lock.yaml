@@ -29,9 +29,6 @@ importers:
       '@tanstack/react-store':
         specifier: ^0.7.3
         version: 0.7.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      '@tanstack/router':
-        specifier: 0.0.1-beta.53
-        version: 0.0.1-beta.53
       '@tanstack/store':
         specifier: ^0.7.2
         version: 0.7.2
@@ -835,14 +832,6 @@ packages:
     resolution: {integrity: sha512-D1Y69ydvoXRHOChFvOsecK9/FTYB2PLUFGdRLt0+FsEcNgvbALp+ADwjcKeglKEQAcTRnYWkh+lS73wRkD1yhQ==}
     engines: {node: '>=12'}
 
-  '@tanstack/router@0.0.1-beta.53':
-    resolution: {integrity: sha512-nX1avh939ufOCoXhJ5wihX/ft6sn50ARrj4FAhRYn50KKzo9fXsYSmPyVgqVdW0hJ4n9XXKIMkwwpzEhLQmqrA==}
-    engines: {node: '>=12'}
-
-  '@tanstack/store@0.0.1-beta.52':
-    resolution: {integrity: sha512-3/5XqeG09sCJnakHpq8qgXjdVpm97aITbi1wfbjLGXdVsss62zpJAvc4vL8ccHf+J/OmoS4dJTNuEZ0alywZtg==}
-    engines: {node: '>=12'}
-
   '@tanstack/store@0.7.2':
     resolution: {integrity: sha512-RP80Z30BYiPX2Pyo0Nyw4s1SJFH2jyM6f9i3HfX4pA+gm5jsnYryscdq2aIQLnL4TaGuQMO+zXmN9nh1Qck+Pg==}
 
@@ -1301,9 +1290,6 @@ packages:
   hasown@2.0.2:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
-
-  immer@9.0.21:
-    resolution: {integrity: sha512-bc4NBHqOqSfRW7POMkHd51LvClaeMXpm8dx0e8oE2GORbq5aRK7Bxl4FyzVLdGtLmvLKL7BTDBG5ACQm4HWjTA==}
 
   indent-string@4.0.0:
     resolution: {integrity: sha512-EdDDZu4A2OyIK7Lr/2zG+w5jmbuk1DVBnEwREQvBzspBJkCEbRa8GxU1lghYcaGJCnRWibjDXlq779X1/y5xwg==}
@@ -2857,16 +2843,6 @@ snapshots:
       - vite-plugin-solid
       - webpack
 
-  '@tanstack/router@0.0.1-beta.53':
-    dependencies:
-      '@babel/runtime': 7.27.6
-      '@tanstack/store': 0.0.1-beta.52
-      tiny-invariant: 1.3.3
-
-  '@tanstack/store@0.0.1-beta.52':
-    dependencies:
-      immer: 9.0.21
-
   '@tanstack/store@0.7.2': {}
 
   '@tanstack/virtual-file-routes@1.121.21': {}
@@ -3333,8 +3309,6 @@ snapshots:
   hasown@2.0.2:
     dependencies:
       function-bind: 1.1.2
-
-  immer@9.0.21: {}
 
   indent-string@4.0.0: {}
 
