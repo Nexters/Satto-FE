@@ -8,10 +8,11 @@ import type {
 
 export const lottoApi = {
   getDraws: async (params: LottoDrawsParams = {}): Promise<LottoDrawsResponse> => {
-    const { cursor, limit = 10 } = params;
+    const { cursor, limit = 10, user_id } = params;
     return apiClient.get<LottoDrawsResponse>('/lotto/draws', {
       cursor,
       limit,
+      user_id,
     });
   },
 

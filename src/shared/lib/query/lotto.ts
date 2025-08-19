@@ -1,6 +1,7 @@
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import { lottoApi } from '../../api';
 import type { LottoDrawsParams, LottoStatisticsParams } from '../../api';
+import { getUserId } from '../auth';
 
 export const LOTTO_QUERY_KEYS = {
   draws: ['lotto', 'draws'] as const,
@@ -10,11 +11,14 @@ export const LOTTO_QUERY_KEYS = {
 export const useLottoDraws = (params: LottoDrawsParams = {}) => {
   return useInfiniteQuery({
     queryKey: [...LOTTO_QUERY_KEYS.draws, params],
-    queryFn: ({ pageParam }) =>
-      lottoApi.getDraws({
+    queryFn: async ({ pageParam }) => {
+      const userId = await getUserId();
+      return lottoApi.getDraws({
         ...params,
         cursor: pageParam as number | null,
-      }),
+        user_id: userId || undefined,
+      });
+    },
     initialPageParam: null as number | null,
     getNextPageParam: (lastPage) => lastPage.next_cursor,
   });

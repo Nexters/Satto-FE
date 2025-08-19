@@ -20,6 +20,7 @@ export interface LottoDrawsResponse {
 export interface LottoDrawsParams {
   cursor?: number | null;
   limit?: number;
+  user_id?: string | null;
 }
 
 export interface LottoStatistic {
@@ -30,6 +31,6 @@ export interface LottoStatistic {
 export type LottoStatisticsResponse = LottoStatistic[];
 
 export interface LottoStatisticsParams {
-  sort_type?: 'frequency' | 'number';
+  sort_type?: "frequency" | "number";
   include_bonus?: boolean;
 }
